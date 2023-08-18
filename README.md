@@ -23,7 +23,7 @@ La página de [Issues](https://github.com/IIC2233/Syllabus/issues) se utilizará
 | Juan Pablo Sáez         | Coordinador Curso       | @Juampisaez             |
 | Natalia Correal         | Coordinadora Bienestar  | @NatC18                 |
 | Camila González         | Coordinadora Docencia   | @camilagonzalezp        |
-| Geraldine Coli          | Coordinador Tareas      | @gecoli                 | 
+| Geraldine Coli          | Coordinadora Tareas      | @gecoli                 | 
 
 ### Ayudantes
 
