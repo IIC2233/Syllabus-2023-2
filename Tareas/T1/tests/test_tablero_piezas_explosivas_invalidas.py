@@ -52,7 +52,7 @@ class TestPiezasExplosivasInvalidas(unittest.TestCase):
             ["--", "--", "--", "--", "--", "--", "--", "H3", "--"],
             ["--", "H2", "--", "--", "--", "--", "--", "--", "--"],
             ["--", "--", "--", "--", "--", "--", "--", "--", "--"],
-            ["PP-", "--", "--", "V5", "--", "PP", "--", "--", "V10"],
+            ["PP", "--", "--", "V5", "--", "PP", "--", "--", "V10"],
         ]
         tablero = Tablero(tablero_str)
         respuesta = tablero.piezas_explosivas_invalidas
