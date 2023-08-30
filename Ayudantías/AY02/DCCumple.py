@@ -11,4 +11,4 @@ def leer_lista_invitados(nombre_archivo):
 #completar
 por_dieta = defaultdict(list)
 
-por_grupo = defaultdict(str)
+por_grupo = defaultdict(list)
