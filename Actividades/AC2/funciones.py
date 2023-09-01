@@ -3,6 +3,7 @@ from collections import defaultdict
 from functools import reduce
 from itertools import product
 from typing import Generator
+import csv
 
 from parametros import RUTA_PELICULAS, RUTA_GENEROS
 from utilidades import (
@@ -15,15 +16,27 @@ from utilidades import (
 # Parte 1: Cargar dataset
 # ----------------------------------------------------------------------------
 
-def cargar_peliculas(ruta: str) -> Generator:
-    # TODO: Completar
-    pass
+def cargar_peliculas(ruta: str) -> Generator[Pelicula, None, None]:
+    with open(ruta, 'r') as archivo:
+        lector = csv.reader(archivo)
+        next(lector)
+        for fila in lector:
+            id = int(fila[0])
+            titulo = fila[1]
+            director = fila[2]
+            estreno = int(fila[3])
+            rating = float(fila[4])
+            yield Pelicula (id,titulo,director,estreno,rating)
 
 
-def cargar_generos(ruta: str) -> Generator:
-    # TODO: Completar
-    pass
-
+def cargar_generos(ruta: str) -> Generator[Genero, None, None]:
+    with open(ruta, 'r') as archivo:
+        lector = csv.reader(archivo)
+        next(lector)
+        for fila in lector:
+            genero=fila[0],
+            id_pelicula=int(fila[1])
+            yield Genero (genero, id_pelicula)
 
 # ----------------------------------------------------------------------------
 # Parte 2: Consultas sobre generadores
