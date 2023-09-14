@@ -95,6 +95,15 @@ class VerificarCarrera(unittest.TestCase):
         with patch("threading.Event.set") as mock:
             self.carrera.run()
             mock.assert_called()
+    
+    @patch("threading.Thread.join")
+    @patch("threading.Thread.start")
+    def test_run_senal_inicio_fue_seteada_BONUS(self, new_start, new_join):
+        """
+        Se verifica que la señal de inicio fue la seteada y no otra
+        """
+        self.carrera.run()
+        self.assertTrue(self.carrera.senal_inicio.is_set())
 
     @patch("threading.Thread.start")
     def test_run_espera_jugadores(self, new_start):

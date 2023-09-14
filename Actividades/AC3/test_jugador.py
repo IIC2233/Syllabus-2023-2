@@ -154,6 +154,16 @@ class VerificarJugador(unittest.TestCase):
             self.j1.intentar_capturar_bandera()
             mock.assert_not_called()
 
+    def test_intentar_capturar_bandera_release_BONUS(self):
+        """
+        Se verifica que si se obtiene el lock, 
+        pero bandera tiene dueño, se libere igual el lock
+        """
+        self.bandera.nombre_dueño = "OTRO"
+        with patch("main.Jugador.capturar_bandera"):
+            self.j1.intentar_capturar_bandera()
+            self.assertNotEqual(self.j1.lock_bandera.releases, 0)
+
     def test_intentar_robar_bandera_retorno_exitoso(self):
         """
         Se verifica el retorno de intentar_robar_bandera cuando es exitoso
