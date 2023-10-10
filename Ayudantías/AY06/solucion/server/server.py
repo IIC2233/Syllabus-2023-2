@@ -19,17 +19,24 @@ class Servidor:
         self.accept_connections()
 
     def bind_listen(self):
-        ## COMPLETAR
-
+        self.socket_server.bind((self.host, self.port))
+        self.socket_server.listen(250)
         print(f'Servidor escuchando en {self.host} : {self.port}')
 
     def accept_connections(self):
-        ## COMPLETAR
-        pass
+        thread = threading.Thread(
+            target=self.accept_connections_thread)
+        thread.start()
 
     def accept_connections_thread(self):
-        ## COMPLETAR
-        pass
+        while True:
+            client_socket, address = self.socket_server.accept()
+            self.sockets[client_socket] = False
+            matching_client_thread = threading.Thread(
+                target=self.match_client_thread,
+                args=(client_socket, ),
+                daemon=True)
+            matching_client_thread.start()
 
     def match_client_thread(self, client_socket):
         switch = True

@@ -25,8 +25,16 @@ class Cliente(QObject):
         self.socket_cliente = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.señales_conectadas = threading.Event()
         self.username = 'User' + ''.join(random.choices(string.ascii_uppercase + string.digits, k=6))
-        
-        ## COMPLETAR
+        try:
+            self.connect_to_server()
+            self.isConnected = True
+            thread = threading.Thread(target=self.buscar_pareja, daemon=True)
+            thread.start()
+        except ConnectionError:
+            print('Conexion terminada')
+            self.socket_cliente.close()
+            self.isConnected = False
+            exit()
 
     def buscar_pareja(self):
         self.señales_conectadas.wait()
@@ -36,17 +44,19 @@ class Cliente(QObject):
             decoded_data = data.decode()
             decoded_data = decoded_data.replace('\'', '\"')
             mensaje = json.loads(decoded_data)
-            
-            ## COMPLETAR
+            if mensaje['type'] == 'connection':
+                self.isTalking = True
+                self.initBackend()
+                self.listen()
+                break
 
     def connect_to_server(self):
-        ## COMPLETAR
-
+        self.socket_cliente.connect((self.host, self.port))
         print('Cliente conectado a servidor')
 
     def listen(self):
-        ## COMPLETAR
-        pass
+        thread = threading.Thread(target=self.listen_thread, daemon=True)
+        thread.start()
 
     def next(self):
         self.isTalking = False
@@ -60,8 +70,14 @@ class Cliente(QObject):
             if data["type"] == "wait":
                 continue
             if data["type"] == "next":
-                ## COMPLETAR
-                
+                if self.isTalking:
+                    self.isTalking = False
+                    data = {
+                        "type": "nexted",
+                        "username": self.username,
+                        "data": ""
+                    }
+                    self.send(data)
                 thread = threading.Thread(target=self.buscar_pareja, daemon=True)
                 thread.start()
                 self.hide_main_window.emit()
