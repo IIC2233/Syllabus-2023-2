@@ -17,7 +17,6 @@ class Mensaje:
 
 class Cliente:
     def __init__(self, port: int, host: str):
-        super().__init__()
         self.conectado = False
         self.port = port
         self.host = host
