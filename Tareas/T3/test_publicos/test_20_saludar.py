@@ -51,9 +51,9 @@ class TestSaludar(unittest.TestCase):
         resultado = f"Hoy es {today} y es un gran día para ver una buena película"
 
         self.assertIn("status-code", respuesta)
-        self.assertIn("result", respuesta)
+        self.assertIn("saludo", respuesta)
         self.assertEqual(respuesta["status-code"], 200)
-        self.assertEqual(respuesta["result"], resultado)
+        self.assertEqual(respuesta["saludo"], resultado)
 
     def test_1(self):
         """
@@ -65,9 +65,9 @@ class TestSaludar(unittest.TestCase):
         resultado = f"Hoy es {today} y tengo ganas de ver una película"
 
         self.assertIn("status-code", respuesta)
-        self.assertIn("result", respuesta)
+        self.assertIn("saludo", respuesta)
         self.assertEqual(respuesta["status-code"], 200)
-        self.assertEqual(respuesta["result"], resultado)
+        self.assertEqual(respuesta["saludo"], resultado)
 
 
 if __name__ == '__main__':
