@@ -80,7 +80,7 @@ class TestGeneroMasTransmitido(unittest.TestCase):
             Funciones(id=5169, numero_sala=6, id_pelicula=38937194, horario=6, fecha="19-08-23"),
         ]
 
-        resultado = genero_mas_transmitido(iter(lista_peliculas), iter(lista_funciones), "24-06-23")
+        resultado = genero_mas_transmitido(iter(lista_peliculas), iter(lista_funciones), "24-06-2023")
         self.assertIsInstance(resultado, str)
         self.assertEqual(resultado, "Animación")
 
@@ -152,7 +152,7 @@ class TestGeneroMasTransmitido(unittest.TestCase):
             Funciones(id=4846, numero_sala=9, id_pelicula=51151305, horario=4, fecha="03-07-23"),
             Funciones(id=6840, numero_sala=4, id_pelicula=66226007, horario=9, fecha="23-08-23"),
         ]
-        resultado = genero_mas_transmitido(iter(lista_peliculas), iter(lista_funciones), "03-07-23")
+        resultado = genero_mas_transmitido(iter(lista_peliculas), iter(lista_funciones), "03-07-2023")
         self.assertIsInstance(resultado, str)
         self.assertEqual(resultado, "Fantasía")
 
@@ -224,7 +224,7 @@ class TestGeneroMasTransmitido(unittest.TestCase):
             Funciones(id=4742, numero_sala=3, id_pelicula=23678361, horario=9, fecha="18-01-23"),
             Funciones(id=9768, numero_sala=2, id_pelicula=41068976, horario=3, fecha="12-11-23"),
         ]
-        resultado = genero_mas_transmitido(iter(lista_peliculas), iter(lista_funciones), "10-04-23")
+        resultado = genero_mas_transmitido(iter(lista_peliculas), iter(lista_funciones), "10-04-2023")
         self.assertIsInstance(resultado, str)
         self.assertEqual(resultado, "Superhéroes")
 
@@ -296,7 +296,7 @@ class TestGeneroMasTransmitido(unittest.TestCase):
             Funciones(id=9449, numero_sala=7, id_pelicula=99972342, horario=3, fecha="01-04-23"),
             Funciones(id=7917, numero_sala=5, id_pelicula=70752273, horario=1, fecha="07-04-23"),
         ]
-        resultado = genero_mas_transmitido(iter(lista_peliculas), iter(lista_funciones), "01-04-23")
+        resultado = genero_mas_transmitido(iter(lista_peliculas), iter(lista_funciones), "01-04-2023")
         self.assertIsInstance(resultado, str)
         self.assertEqual(resultado, "Drama")
 
@@ -368,7 +368,7 @@ class TestGeneroMasTransmitido(unittest.TestCase):
             Funciones(id=2262, numero_sala=7, id_pelicula=11615401, horario=9, fecha="27-09-23"),
             Funciones(id=3920, numero_sala=1, id_pelicula=98009659, horario=1, fecha="14-02-23"),
         ]
-        resultado = genero_mas_transmitido(iter(lista_peliculas), iter(lista_funciones), "05-18-23")
+        resultado = genero_mas_transmitido(iter(lista_peliculas), iter(lista_funciones), "05-18-2023")
         self.assertIsInstance(resultado, str)
         self.assertEqual(resultado, "")
 
