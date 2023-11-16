@@ -23,15 +23,15 @@ class Peliculas:
         # Completar
         return "Completar"
 
-    def agregar_informacion(self, pelicula: str, sinopsis: str, access_token: str) -> dict:
+    def agregar_informacion(self, pelicula: str, sinopsis: str, access_token: str):
         # Completar
         return "Completar"
 
-    def actualizar_informacion(self, pelicula: str, sinopsis: str, access_token: str) -> dict:
+    def actualizar_informacion(self, pelicula: str, sinopsis: str, access_token: str):
         # Completar
         return "Completar"
 
-    def eliminar_pelicula(self, pelicula: str, access_token: str) -> dict:
+    def eliminar_pelicula(self, pelicula: str, access_token: str):
         # Completar
         return "Completar"
 
