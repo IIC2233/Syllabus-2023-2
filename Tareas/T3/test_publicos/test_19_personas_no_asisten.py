@@ -54,6 +54,9 @@ class TestPersonasNoAsisten(unittest.TestCase):
             Personas(id=359827, nombre='Luis', genero='Masculino', edad=84),
             Personas(id=673894, nombre='Felipe', genero='No binario', edad=19),
             Personas(id=518367, nombre='Mateo', genero='Femenino', edad=77),
+            Personas(id=926242, nombre='Martina', genero='Femenino', edad=36),
+            Personas(id=596318, nombre='Martín', genero='Masculino', edad=81),
+            Personas(id=372615, nombre='Jimena', genero='Masculino', edad=72),
         ]
         fecha_inicio = "02-12-2023"
         fecha_termino = "03-12-2023"
