@@ -37,6 +37,7 @@ ARCHIVOS_OMITIDOS = [
     ('.', 'test_publicos', 'test_elementos_prohibidos.py'),
 ]
 
+
 class ComandoProhibidoError(BaseException):
     def __init__(self, comando: str, archivo: str, linea: int, *args: object) -> None:
         mensaje = f'Se ha hecho uso de "{comando}", en: "{archivo}", line {linea}.' \
@@ -44,7 +45,7 @@ class ComandoProhibidoError(BaseException):
         super().__init__(mensaje, *args[2:])
 
 
-def obtener_archivos_python(omitidos) -> list:
+def obtener_archivos_python(omitidos: list) -> list:
     archivos_omitidos = {os.path.join(*path) for path in omitidos}
     archivos_python = set()
 
@@ -61,17 +62,16 @@ def revisar_comandos_prohibidos(archivo: str) -> None:
         codigo = ast.parse(file.read())
 
     for nodo in ast.walk(codigo):
-        # print(nodo)
         if isinstance(nodo, (ast.While, ast.For, ast.List, ast.Dict, ast.Tuple, ast.Set)):
             comando = type(nodo).__name__.lower()
             linea = nodo.lineno
             raise ComandoProhibidoError(comando, archivo, linea)
-        
+
         if isinstance(nodo, ast.Name):
             if nodo.id in ('list', 'dict', 'set', 'tuple'):
                 linea = nodo.lineno
                 raise ComandoProhibidoError(nodo.id, archivo, linea)
-        
+
         if isinstance(nodo, ast.Assign):
             if isinstance(nodo.value, (ast.List, ast.Dict, ast.Tuple, ast.Set)):
                 comando = type(nodo.value).__name__.lower()
@@ -79,6 +79,6 @@ def revisar_comandos_prohibidos(archivo: str) -> None:
                 raise ComandoProhibidoError(comando, archivo, linea)
 
 
-def revisar_comandos_prohibidos_todo_archivos(omitidos: list=ARCHIVOS_OMITIDOS) -> None:
+def revisar_comandos_prohibidos_todo_archivos(omitidos: list = ARCHIVOS_OMITIDOS) -> None:
     for archivo in obtener_archivos_python(omitidos):
         revisar_comandos_prohibidos(archivo)

@@ -40,13 +40,13 @@ class TestPersonasNoAsisten(unittest.TestCase):
         ]
         funciones = [
             Funciones(id=9721, numero_sala=6, id_pelicula=40873645, horario=6, fecha='01-12-23'),
-            Funciones(id=4243, numero_sala=6, id_pelicula=40873645, horario=3, fecha='03-12-23'),
-            Funciones(id=7817, numero_sala=5, id_pelicula=62764502, horario=4, fecha='03-12-23'),
+            Funciones(id=4293, numero_sala=6, id_pelicula=40873645, horario=3, fecha='03-12-23'),
+            Funciones(id=7617, numero_sala=5, id_pelicula=62764502, horario=4, fecha='03-12-23'),
             Funciones(id=6237, numero_sala=8, id_pelicula=19177277, horario=5, fecha='02-12-23'),
-            Funciones(id=7717, numero_sala=7, id_pelicula=32568878, horario=1, fecha='02-12-23'),
+            Funciones(id=7117, numero_sala=7, id_pelicula=32568878, horario=1, fecha='02-12-23'),
             Funciones(id=9761, numero_sala=2, id_pelicula=73020923, horario=5, fecha='01-12-23'),
-            Funciones(id=7617, numero_sala=6, id_pelicula=11615401, horario=5, fecha='05-12-23'),
-            Funciones(id=4293, numero_sala=7, id_pelicula=41115118, horario=2, fecha='03-12-23'),
+            Funciones(id=7517, numero_sala=6, id_pelicula=11615401, horario=5, fecha='05-12-23'),
+            Funciones(id=4283, numero_sala=7, id_pelicula=41115118, horario=2, fecha='03-12-23'),
         ]
 
         expected_personas = [
@@ -54,9 +54,6 @@ class TestPersonasNoAsisten(unittest.TestCase):
             Personas(id=359827, nombre='Luis', genero='Masculino', edad=84),
             Personas(id=673894, nombre='Felipe', genero='No binario', edad=19),
             Personas(id=518367, nombre='Mateo', genero='Femenino', edad=77),
-            Personas(id=926242, nombre='Martina', genero='Femenino', edad=36),
-            Personas(id=596318, nombre='Martín', genero='Masculino', edad=81),
-            Personas(id=372615, nombre='Jimena', genero='Masculino', edad=72),
         ]
         fecha_inicio = "02-12-2023"
         fecha_termino = "03-12-2023"
@@ -65,7 +62,7 @@ class TestPersonasNoAsisten(unittest.TestCase):
         gen_reservas = (r for r in reservas)
         gen_funciones = (f for f in funciones)
         resultado = personas_no_asisten(gen_personas, gen_reservas, gen_funciones, fecha_inicio,
-                                         fecha_termino)
+                                        fecha_termino)
         self.assertIsInstance(resultado, (list, tuple, set, filter, map, Generator))
         self.assertCountEqual(list(resultado), expected_personas)
 
