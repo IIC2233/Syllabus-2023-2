@@ -2,6 +2,7 @@ from collections import defaultdict
 from functools import wraps
 from io import StringIO
 import signal
+import platform
 import unittest
 from unittest.mock import patch
 
@@ -51,6 +52,10 @@ def timeout(seconds=None):
                 if new_seconds:
                     signal.setitimer(signal.ITIMER_REAL, 0)
                     signal.signal(signal.SIGALRM, old)
+        
+        if platform.system().lower() == "windows":
+            return function
+        
         return new_function
 
     return decorate
